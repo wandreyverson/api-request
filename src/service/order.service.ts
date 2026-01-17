@@ -12,7 +12,7 @@ export class OrderService {
         for (const order of orders) {
             const itemsResult = await pool.request()
                 .input('orderId', sql.Int, order.id)
-                .query(`SELECT * FROM OrderItems WHERE orderId = @orderId`);
+                .query(`SELECT * FROM OrdersItem WHERE orderId = @orderId`);
             order.items = itemsResult.recordset;
         }
 
@@ -32,11 +32,12 @@ export class OrderService {
 
         const orderId = result.recordset[0].id;
 
-        const table = new sql.Table('OrderItems');
-        table.columns.add('orderId', sql.Int, { nullable: false });
+        const table = new sql.Table('OrdersItem');
+        table.columns.add('orderId', sql.Int, { nullable: true });
         table.columns.add('product', sql.NVarChar(255), { nullable: false });
         table.columns.add('quantity', sql.Int, { nullable: false });
         table.columns.add('price', sql.Float, { nullable: false });
+
 
         for (const item of items) {
             table.rows.add(orderId, item.product, item.quantity, item.price);
@@ -44,7 +45,7 @@ export class OrderService {
 
         const request = pool.request();
         await request.bulk(table);
-
+      
         return {
             id: orderId,
             client,
