@@ -1,4 +1,4 @@
-import { getConnection } from '../server/db';
+import { getConnection } from '../../server/db';
 import sql from 'mssql';
 import { CreateOrdersDto, UpdateStatusDto } from './dto.order';
 

@@ -1,8 +1,9 @@
 import 'reflect-metadata'
 import 'dotenv/config'
 import { DataSource } from 'typeorm'
-import { Orders } from './entity/Orders'
-import { OrdersItem } from './entity/OrdersItem'
+import { Orders } from './entity/orders/Orders'
+import { OrdersItem } from './entity/orders/OrdersItem'
+import { User } from './entity/user/User'
 
 export const AppDataSource = new DataSource({
   type: 'mssql',
@@ -15,7 +16,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
 
-  entities: [Orders, OrdersItem],
+  entities: [Orders, OrdersItem, User],
   migrations: ['src/migrations/*.ts'],
 
   options: {

@@ -4,16 +4,30 @@ export const swaggerSpec = swaggerJsdoc({
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Orders API',
+            title: 'Goop API',
             version: '1.0.0',
-            description: 'API para gerenciamento de pedidos'
+            description: 'API para gerenciamento de pedidos',
         },
         servers: [
             {
                 url: 'http://localhost:3000',
-                description: 'Ambiente local'
-            }
-        ]
+                description: 'Ambiente local',
+            },
+        ],
+        components: {
+            securitySchemes: {
+                BearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [
+            {
+                BearerAuth: [],
+            },
+        ],
     },
     apis: ['./src/router/**/*.ts'],
 });

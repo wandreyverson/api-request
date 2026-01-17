@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { CreateOrdersDto, UpdateStatusDto } from '../service/dto.order';
-import { OrderService } from '../service/order.service';
+import { CreateOrdersDto, UpdateStatusDto } from '../../service/orders/dto.order';
+import { OrderService } from '../../service/orders/order.service';
 
 const orderService = new OrderService();
 

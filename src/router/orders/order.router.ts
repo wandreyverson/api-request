@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import { createOrders, listOrders, updateStatus } from '../controller/order.controller';
+import { createOrders, listOrders, updateStatus } from '../../controller/orders/order.controller';
+import { authMiddleware } from '../../middleware/auth.middleware';
 
 const router = Router();
+router.use(authMiddleware);
+
 
 /**
  * @swagger
