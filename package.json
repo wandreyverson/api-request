@@ -7,6 +7,7 @@
     "dev": "node --inspect-brk -r ts-node/register src/server.ts",
     "build": "tsc",
     "start": "node dist/server.ts",
+    "docker:compose": "docker-compose up -d",       
     "db:init": "ts-node ./src/server/db-init.ts",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate src/migrations/InitialSetup -d src/data-source.ts",
     "migration:run": "typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
