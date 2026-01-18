@@ -52,7 +52,7 @@ Certifique-se de que o Docker está rodando e execute:
 
 npm run docker:compose
 
-Em seguida, inicialize o banco:
+Em seguida espere subir o docker, inicialize o banco:
 
 npm run db:init
 
@@ -60,7 +60,7 @@ npm run db:init
 
 ## 🔹 Migrações com TypeORM
 
-Caso seja a primeira vez ou haja mudanças no schema:
+Caso seja a primeira vez ou haja mudanças no schema, como ja tem uma migration não vai precisar do:
 
 npm run migration:generate
 
@@ -72,7 +72,7 @@ npm run migration:run
 
 ## 🔹 Rodando o servidor em desenvolvimento
 
-npm run dev
+npm run dev + F5
 
 O servidor estará disponível em:
 
